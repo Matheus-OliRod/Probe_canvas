@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Handling the nav and its elements */
+
+nav {
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    padding: 0 5px;
+    height: 100%;
+    box-shadow: 10px 0px 20px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+button {
+    cursor: pointer;
+}
+
+.icon_button {
+    width: 60px;
+    height: 60px;
+    transition: linear .1s;
+    border-radius: 50%;
+    border: none;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon_button:hover {
+    transform: scale(1.05);
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    background-color: rgb(160, 158, 158);
+}
+
+.icon_button > img{
+    width: 50px;
+    height: 50px;
+}
+
+/* Handlig the right_divs */
+
+.right_divs {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* Handling the card creating section */
+
+#card_fields {
+    display: block;
+    padding: 10px 5px 10px 10px;
+}
+
+#section_creator_button {
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    display: block;
+    background-color: greenyellow;
+    border: solid black 3px;
+    border-radius: 5px;
+    z-index: 0;
+    transition: linear .1s ;
+}
+
+#section_creator_button:hover {
+    background-color: green;
+}
+
+#section_manager {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 450px;
+    overflow: auto;
+    box-shadow: inset 0px 0px 15px 2px black;
+}
+
+.section {
+    width: 100%;
+    transition: ease-out .2s;
+    height: 300px;
+}
+
+.expander {
+    text-align: right;
+    cursor: pointer;
+}
+
+.card {
+    width: 250px;
+    height: 300px;
+}
+
+.ghost_card {
+    width: 200px;
+    height: 230px;
+    margin: 10px;
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    cursor: pointer;
+    transition: 0.1s ease-out;
+}
+
+.ghost_card:hover {
+    transform: scale(1.05);
+}
+
+.title {
+    font-weight: bold;
+    font-style: italic;
+    box-shadow: 0px 2px 5px 0px black;
+    transition: .05s ease-out;
+}
+
+.title:hover {
+    font-style: normal;
+}

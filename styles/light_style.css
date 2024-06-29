@@ -1,0 +1,36 @@
+/* Handling nav & its elements styles */
+
+nav {
+    background-color: lightgrey;
+    color: white;
+}
+
+.icon_button {
+    background-color: lightgrey;
+}
+
+/* Handling card field & its elements styles */
+
+.right_divs {
+    background-color: #db4c40;
+}
+
+.section {
+    background: linear-gradient(#720900, #9c291f);
+}
+
+.expander {
+    background-color: gray;
+}
+
+.title {
+    background-color: darkred;
+}
+
+.ghost_card {
+    background: rgba(0, 255, 255, 0.2);
+}
+
+.ghost_card:hover {
+    background-color: rgba(0, 255, 255, 0.4);
+}
