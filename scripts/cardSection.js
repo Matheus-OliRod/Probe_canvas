@@ -108,7 +108,7 @@ class Section {
 
         this.title.contentEditable = "true";
         this.extender.addEventListener("click", e => alterVisibility(this.holder, this.extender));
-        this.delete_button.addEventListener("click", e => deleteNode(holder));
+        this.delete_button.addEventListener("click", e => deleteNode(this.section));
 
         return this.section;
     }
