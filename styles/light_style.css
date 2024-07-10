@@ -19,12 +19,18 @@ nav {
     background: linear-gradient(#720900, #9c291f);
 }
 
-.expander {
-    background-color: gray;
+.section_header {
+    background-color: darkred;
+    color: white;
 }
 
-.title {
-    background-color: darkred;
+.expander {
+    background-color: gray;
+    display: block;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
 }
 
 .ghost_card {

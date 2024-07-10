@@ -91,7 +91,40 @@ button {
 .section {
     width: 100%;
     transition: ease-out .2s;
-    height: 300px;
+    height: fit-content;
+}
+
+.section_header {
+    font-weight: bold;
+    font-style: italic;
+    box-shadow: 0px 2px 5px 0px black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section_holder {
+    display: flex;
+}
+
+.delete_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+}
+
+.delete_button > img {
+    width: 25px;
+    height: 25px;
+    transition: .2s ease-out;
+}
+
+.delete_button:hover > img{
+    transform: scale(1.2);
 }
 
 .expander {
@@ -100,8 +133,8 @@ button {
 }
 
 .card {
-    width: 250px;
-    height: 300px;
+    width: 200px;
+    height: 230px;
 }
 
 .ghost_card {
@@ -123,12 +156,33 @@ button {
 }
 
 .title {
-    font-weight: bold;
-    font-style: italic;
-    box-shadow: 0px 2px 5px 0px black;
     transition: .05s ease-out;
+    padding: 10px;
 }
 
 .title:hover {
     font-style: normal;
+}
+
+/* Animations */
+
+@keyframes hide_content {
+    from {
+        height: 100%;
+    }
+    to {
+        height: 0;
+    }
+}
+
+@keyframes show_content {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        height: 100%;
+        opacity: 1;
+    }
 }
