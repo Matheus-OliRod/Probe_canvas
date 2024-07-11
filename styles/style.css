@@ -104,12 +104,14 @@ button {
 
 .section_holder {
     display: flex;
+    overflow-x: auto;
 }
 
 .delete_button {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto 0;
     width: 35px;
     height: 35px;
     border: none;
@@ -128,13 +130,18 @@ button {
 }
 
 .expander {
-    text-align: right;
+    text-align: center;
     cursor: pointer;
+    margin: auto 10px;
 }
 
 .card {
     width: 200px;
     height: 230px;
+    margin: 10px;
+    border-radius: 30px;
+    transition: 0.1s ease-out;
+    background-color: #CDEAC0;
 }
 
 .ghost_card {
@@ -165,24 +172,3 @@ button {
 }
 
 /* Animations */
-
-@keyframes hide_content {
-    from {
-        height: 100%;
-    }
-    to {
-        height: 0;
-    }
-}
-
-@keyframes show_content {
-    from {
-        height: 0;
-        opacity: 0;
-    }
-
-    to {
-        height: 100%;
-        opacity: 1;
-    }
-}

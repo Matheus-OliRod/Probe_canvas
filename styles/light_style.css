@@ -26,8 +26,10 @@ nav {
 
 .expander {
     background-color: gray;
-    display: block;
+    display: flex;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     width: 20px;
     height: 20px;
     border-radius: 50%;

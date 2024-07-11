@@ -8,12 +8,19 @@ function createSection() {
 
 // Creates a new card
 function createCard(section) {
-
+    section.appendChild(new Card());
 }
 
 // Creates a checkmark to each objective line in a card
 function createCheckmark() {
 
+}
+
+// Unfocus the titles inputs when hit enter
+function unfocusTitle(title_node, event) {
+
+    if(event.key == "Enter")
+        title_node.blur();
 }
 
 // Expands and hides the visibility of a section
@@ -35,18 +42,53 @@ function alterVisibility(holder, extender) {
 
 // Deletes a specific HTML node and its childs
 function deleteNode(node) {
-    node.remove();
+
+    if(window.confirm("Do you really wish to delete this?"))
+        node.remove();
 }
 
 // ---- Card classes ---- //
 
 class Card {
 
-    holder = document.createElement("div");
+    card = document.createElement("div"); // Will hold all the elements togheter in a card
     header = document.createElement("div");
     title = document.createElement("h3");
     delete_button = document.createElement("button");
+    delete_img = document.createElement("img");
     content = document.createElement("div");
+
+    constructor() {
+        
+        // Adding the classes
+
+        this.card.classList = "card";
+        this.header.classList = "header";
+        this.title.classList = "title";
+        this.delete_button.classList = "delete_button";
+        this.content.classList = "card_content";
+
+        // Adding attributes
+
+        this.title.contentEditable = "true";
+        this.delete_button.addEventListener("click", e => deleteNode(this.card));
+        this.content.contentEditable = "true";
+        this.content.addEventListener("keypress", e => createCheckmark(this.content));
+
+        this.title.innerHTML = "No Title";
+        this.delete_img.src = "./resources/icons/delete_icon.png";
+
+        // Grouping nodes
+
+        this.header.appendChild(this.title);
+        this.header.appendChild(this.delete_button);
+
+        this.card.appendChild(this.header);
+        this.card.appendChild(this.content);
+
+        return this.card;
+
+    }
 
 }
 
@@ -87,10 +129,6 @@ class Section {
         this.holder.classList = "section_holder";
         this.delete_button.classList = "delete_button";
 
-        this.title.innerHTML = "No Title";
-        this.extender.innerHTML = ">";
-        this.delete_img.src = "./resources/icons/delete_icon.png";
-
         // Grouping everything
 
         this.header.appendChild(this.title);
@@ -98,7 +136,7 @@ class Section {
 
         this.delete_button.appendChild(this.delete_img);
 
-        this.holder.appendChild(new GhostCard());
+        this.holder.appendChild(new GhostCard(this.holder));
         this.holder.appendChild(this.delete_button);
 
         this.section.appendChild(this.header);
@@ -107,8 +145,13 @@ class Section {
         // Giving attributes
 
         this.title.contentEditable = "true";
+        this.title.addEventListener("keypress", e => unfocusTitle(this.title, e));
         this.extender.addEventListener("click", e => alterVisibility(this.holder, this.extender));
         this.delete_button.addEventListener("click", e => deleteNode(this.section));
+
+        this.title.innerHTML = "No Title";
+        this.extender.innerHTML = ">";
+        this.delete_img.src = "./resources/icons/delete_icon.png";
 
         return this.section;
     }
@@ -116,9 +159,5 @@ class Section {
 }
 
 export default{
-    Card,
-    GhostCard,
-    createSection,
-    createCheckmark,
-    alterVisibility
+    createSection
 };
