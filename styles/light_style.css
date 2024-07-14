@@ -26,14 +26,11 @@ nav {
 
 .expander {
     background-color: gray;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
 }
+
+
+
+/* Handling the cards and its elements */
 
 .ghost_card {
     background: rgba(0, 255, 255, 0.2);
@@ -41,4 +38,8 @@ nav {
 
 .ghost_card:hover {
     background-color: rgba(0, 255, 255, 0.4);
+}
+
+.card_header {
+    background-color: darkcyan;
 }

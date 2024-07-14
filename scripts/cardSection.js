@@ -17,7 +17,7 @@ function createCheckmark() {
 }
 
 // Unfocus the titles inputs when hit enter
-function unfocusTitle(title_node, event) {
+function blurTitle(title_node, event) {
 
     if(event.key == "Enter")
         title_node.blur();
@@ -63,17 +63,21 @@ class Card {
         // Adding the classes
 
         this.card.classList = "card";
-        this.header.classList = "header";
-        this.title.classList = "title";
-        this.delete_button.classList = "delete_button";
+        this.header.classList = "card_header";
+        this.title.classList = "card_title";
+        this.delete_button.classList = "card_delete_button";
         this.content.classList = "card_content";
 
         // Adding attributes
 
+        
         this.title.contentEditable = "true";
+        this.title.addEventListener("keypress", e => blurTitle(this.title, e));
         this.delete_button.addEventListener("click", e => deleteNode(this.card));
         this.content.contentEditable = "true";
         this.content.addEventListener("keypress", e => createCheckmark(this.content));
+        
+        this.card.addEventListener("click", e => this.content.focus());
 
         this.title.innerHTML = "No Title";
         this.delete_img.src = "./resources/icons/delete_icon.png";
@@ -136,8 +140,8 @@ class Section {
 
         this.delete_button.appendChild(this.delete_img);
 
-        this.holder.appendChild(new GhostCard(this.holder));
         this.holder.appendChild(this.delete_button);
+        this.holder.appendChild(new GhostCard(this.holder));
 
         this.section.appendChild(this.header);
         this.section.appendChild(this.holder);
@@ -145,7 +149,7 @@ class Section {
         // Giving attributes
 
         this.title.contentEditable = "true";
-        this.title.addEventListener("keypress", e => unfocusTitle(this.title, e));
+        this.title.addEventListener("keypress", e => blurTitle(this.title, e));
         this.extender.addEventListener("click", e => alterVisibility(this.holder, this.extender));
         this.delete_button.addEventListener("click", e => deleteNode(this.section));
 

@@ -56,7 +56,7 @@ button {
     flex-grow: 1;
 }
 
-/* Handling the card creating section */
+/* Handling the section elements */
 
 #card_fields {
     display: block;
@@ -92,6 +92,7 @@ button {
     width: 100%;
     transition: ease-out .2s;
     height: fit-content;
+    overflow-x: auto;
 }
 
 .section_header {
@@ -130,10 +131,31 @@ button {
 }
 
 .expander {
+    display: flex;
     text-align: center;
-    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
     margin: auto 10px;
+    cursor: pointer;
 }
+
+.title {
+    transition: .05s ease-out;
+    padding: 10px;
+}
+
+.title:hover {
+    font-style: normal;
+}
+
+.title:focus {
+    outline: none;
+}
+
+/* Handling the card styles and its components */
 
 .card {
     width: 200px;
@@ -142,6 +164,11 @@ button {
     border-radius: 30px;
     transition: 0.1s ease-out;
     background-color: #CDEAC0;
+    transition: 0.1s ease-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
 }
 
 .ghost_card {
@@ -162,13 +189,47 @@ button {
     transform: scale(1.05);
 }
 
-.title {
-    transition: .05s ease-out;
-    padding: 10px;
+.card_header {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px 30px 0 0;
 }
 
-.title:hover {
+.card_title {
+    margin: 10px 0 0 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style: italic;
+}
+
+.card_title:focus {
+    outline: none;
     font-style: normal;
+}
+
+.card_title:hover {
+    font-style: normal;
+}
+
+.card_delete_button {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: auto 10px;
+    background-color: red;
+    border: solid 1px black;
+}
+
+.card_delete_button > img {
+    width: 20px;
+    height: 20px;
+}
+
+.card_content {
+    margin: 10px;
+}
+
+.card_content:focus {
+    outline: none;
 }
 
 /* Animations */
