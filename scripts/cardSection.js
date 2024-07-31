@@ -16,6 +16,13 @@ function createCheckmark() {
 
 }
 
+// Sets the focus to the content of the card
+function setFocus(content, header, event) {
+    if (!event.target.closest('.card_header')) {
+        document.querySelector('.card_content').focus();
+    }
+}
+
 // Unfocus the titles inputs when hit enter
 function blurTitle(title_node, event) {
 
@@ -70,19 +77,21 @@ class Card {
 
         // Adding attributes
 
-        
+        this.card.spellcheck = false;
         this.title.contentEditable = "true";
         this.title.addEventListener("keypress", e => blurTitle(this.title, e));
         this.delete_button.addEventListener("click", e => deleteNode(this.card));
         this.content.contentEditable = "true";
         this.content.addEventListener("keypress", e => createCheckmark(this.content));
         
-        this.card.addEventListener("click", e => this.content.focus());
+        this.card.addEventListener("click", e => setFocus(this.content, this.holder, e));
 
         this.title.innerHTML = "No Title";
         this.delete_img.src = "./resources/icons/delete_icon.png";
 
         // Grouping nodes
+
+        this.delete_button.appendChild(this.delete_img);
 
         this.header.appendChild(this.title);
         this.header.appendChild(this.delete_button);
@@ -148,6 +157,7 @@ class Section {
 
         // Giving attributes
 
+        this.section.spellcheck = false;
         this.title.contentEditable = "true";
         this.title.addEventListener("keypress", e => blurTitle(this.title, e));
         this.extender.addEventListener("click", e => alterVisibility(this.holder, this.extender));

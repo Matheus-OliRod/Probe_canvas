@@ -54,12 +54,14 @@ button {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    overflow: auto;
 }
 
 /* Handling the section elements */
 
 #card_fields {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 10px 5px 10px 10px;
 }
 
@@ -89,10 +91,12 @@ button {
 }
 
 .section {
+    flex: 0 0 auto;
     width: 100%;
-    transition: ease-out .2s;
     height: fit-content;
-    overflow-x: auto;
+    transition: ease-out .2s;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 .section_header {
@@ -105,14 +109,25 @@ button {
 
 .section_holder {
     display: flex;
+    height: fit-content;
+    width: 100%;
     overflow-x: auto;
+}
+
+.section_holder::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+.section_holder::-webkit-scrollbar-thumb {
+    background-color: azure;
+    border-radius: 15px;
 }
 
 .delete_button {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto 0;
+    margin: auto 10px;
     width: 35px;
     height: 35px;
     border: none;
@@ -158,6 +173,7 @@ button {
 /* Handling the card styles and its components */
 
 .card {
+    flex: 0 0 auto;
     width: 200px;
     height: 230px;
     margin: 10px;
@@ -172,6 +188,8 @@ button {
 }
 
 .ghost_card {
+    user-select: none;
+    flex: 0 0 auto;
     width: 200px;
     height: 230px;
     margin: 10px;
@@ -211,21 +229,22 @@ button {
 }
 
 .card_delete_button {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    margin: auto 10px;
+    width: 50px;
+    height: 35px;
+    border-radius: 0 30px 0 0;
     background-color: red;
     border: solid 1px black;
 }
 
 .card_delete_button > img {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
+    margin: auto;
 }
 
 .card_content {
     margin: 10px;
+    cursor: default;
 }
 
 .card_content:focus {
