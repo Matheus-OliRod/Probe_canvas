@@ -244,11 +244,39 @@ button {
 
 .card_content {
     margin: 10px;
-    cursor: default;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .card_content:focus {
     outline: none;
+}
+
+.card_content > input {
+    cursor: default;
+    background-color: transparent;
+    border: none;
+}
+
+.card_content > input:focus {
+    outline: none;
+}
+
+/* Handling the To-Do list items */
+
+.ToDo_text {
+    font-weight: bold;
+}
+
+.checkbox {
+    width: 15px;
+    height: 15px;
+}
+
+.checkbox_holder {
+    margin: 2px 0;
+    padding: 0 2px;
+    display: flex;
 }
 
 /* Animations */

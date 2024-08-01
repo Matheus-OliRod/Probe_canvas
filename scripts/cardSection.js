@@ -12,14 +12,20 @@ function createCard(section) {
 }
 
 // Creates a checkmark to each objective line in a card
-function createCheckmark() {
+function createCheckmark(event, input_node, content_node) {
+
+    if(event.key != "Enter" || !input_node.value)
+        return;
+
+    content_node.insertBefore(new ToDoMarker(input_node.value), input_node);
+    input_node.value = "";
 
 }
 
 // Sets the focus to the content of the card
-function setFocus(content, header, event) {
+function setFocus(content, event) {
     if (!event.target.closest('.card_header')) {
-        document.querySelector('.card_content').focus();
+        content.focus();
     }
 }
 
@@ -64,6 +70,7 @@ class Card {
     delete_button = document.createElement("button");
     delete_img = document.createElement("img");
     content = document.createElement("div");
+    content_input = document.createElement("input");
 
     constructor() {
         
@@ -74,6 +81,7 @@ class Card {
         this.title.classList = "card_title";
         this.delete_button.classList = "card_delete_button";
         this.content.classList = "card_content";
+        this.content_input.classList = "content_input";
 
         // Adding attributes
 
@@ -81,10 +89,9 @@ class Card {
         this.title.contentEditable = "true";
         this.title.addEventListener("keypress", e => blurTitle(this.title, e));
         this.delete_button.addEventListener("click", e => deleteNode(this.card));
-        this.content.contentEditable = "true";
-        this.content.addEventListener("keypress", e => createCheckmark(this.content));
+        this.content_input.addEventListener("keypress", e => createCheckmark(e, this.content_input, this.content));
         
-        this.card.addEventListener("click", e => setFocus(this.content, this.holder, e));
+        this.card.addEventListener("click", e => setFocus(this.content_input, e));
 
         this.title.innerHTML = "No Title";
         this.delete_img.src = "./resources/icons/delete_icon.png";
@@ -95,6 +102,8 @@ class Card {
 
         this.header.appendChild(this.title);
         this.header.appendChild(this.delete_button);
+
+        this.content.appendChild(this.content_input);
 
         this.card.appendChild(this.header);
         this.card.appendChild(this.content);
@@ -170,6 +179,36 @@ class Section {
         return this.section;
     }
 
+}
+
+class ToDoMarker {
+
+    checkbox = document.createElement("button");
+    p = document.createElement("p");
+    holder = document.createElement("div");
+
+    constructor(text) {
+
+        // Adding the css classes
+
+        this.checkbox.classList = "checkbox";
+        this.p.classList = "ToDo_text";
+        this.holder.classList = "checkbox_holder";
+
+        // Adding attributes
+
+        this.checkbox.type = "checkbox";
+
+        this.p.innerHTML = text;
+
+        //grouping everything
+
+        this.holder.appendChild(this.checkbox);
+        this.holder.appendChild(this.p);
+
+        return this.holder;
+
+    }
 }
 
 export default{
