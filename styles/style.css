@@ -245,7 +245,7 @@ button {
 .card_content {
     margin: 10px;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 .card_content:focus {
