@@ -2,7 +2,8 @@ import './main_page.css';
 
 // js file specific to build the main page and its architeture
 
-function loadMainPage() {
+function LoadMainPage() {
+    return (
     <div id='container'>
         <nav></nav>
         <header>
@@ -11,6 +12,9 @@ function loadMainPage() {
             </button>
             <button id='switch-to-uml'></button>
         </header>
-        
+
     </div>
+    );
 }
+
+export default LoadMainPage;
