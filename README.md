@@ -1,5 +1,7 @@
 # About the project
 
+(Be aware that this project is currently under development, none of the features mentioned below is currently implemented)
+
 This project is a simple merge of a card management system (like trello), and an uml system.
 
 This webapp ains to help specially solo developers to plan the ahead of their own projects without the need of switching between many apps to create their own schematic of their product.
