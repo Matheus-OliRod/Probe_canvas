@@ -70,6 +70,11 @@ header {
     font-weight: bold;
 }
 
+#section-creator:active {
+    box-shadow: 0 3px 5px 0 black;
+    transform: translateY(2px);
+}
+
 #switch-to-uml {
     display: flex;
     align-items: center;
