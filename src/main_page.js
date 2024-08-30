@@ -1,13 +1,16 @@
+import React, { useState } from 'react';
 import './main_page.css';
 import Section from "./Section.js";
 
 // js file specific to build the main page and its architeture
 
 function LoadMainPage() {
+
+    const [sections, setSections] = useState([]);
     
-    function appendNewSection() {
-        let section_holder = document.getElementById("section-holder");
-        section_holder.appendChild(<Section />);
+    const appendNewSection = () => {
+        console.log(...sections);
+        setSections(s => [...s, <Section key={s.length} />]);
     }
 
     return (
@@ -29,8 +32,10 @@ function LoadMainPage() {
             <button id='switch-to-uml'> {'>'} </button>
         </header>
 
-        <div id='section-holder'></div>
+        <div id='section-holder'>
+            {sections}
         </div>
+    </div>
 
     </div>
     );

@@ -19,11 +19,11 @@ button {
 
 nav {
     background-color: #D5D8DC;
-    width: 60px;
+    width: 40px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 25px 5px;
+    padding: 15px 5px;
 }
 
 nav > button {
@@ -39,8 +39,8 @@ nav > button:hover {
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
 }
 
 #section-manager {
