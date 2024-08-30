@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './main_page.css';
-import Section from "./Section.js";
+import Section from "../components/Section.js";
 
 // js file specific to build the main page and its architeture
 
