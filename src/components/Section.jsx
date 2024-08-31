@@ -1,5 +1,5 @@
 import './Section.css';
-import GhostCard from './GhostCard.js';
+import GhostCard from './GhostCard.jsx';
 import React, {useState} from 'react';
 
 function Section() {
