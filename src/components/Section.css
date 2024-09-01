@@ -1,3 +1,41 @@
 .section {
-    background-color: gray;
+    background-color: #F0F0F0;
+    color: #333;
+    margin: 2px 0;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: #007BFF;
+    border: 1px solid #ddd;
+}
+
+.section-header > input[type="text"] {
+    width: auto;
+    color: #fafafa;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    font-size: larger;
+    margin: 5px;
+}
+
+.section-header > input[type="text"]:focus {
+    outline: none;
+    border-bottom: 1px black solid;
+}
+
+.content-holder {
+    overflow-x: auto;
+}
+
+.header-button-group {
+    display: flex;
+    margin-right: 10px;
+}
+
+.switch-visibility-button {
+    display: block;
+    margin: auto;
 }

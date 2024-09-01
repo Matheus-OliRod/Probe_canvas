@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import importpng from "../resources/import.png";
+import exportpng from "../resources/export.png";
 import './main_page.css';
-import Section from "../components/Section.js";
+import Section from "../components/Section.jsx";
 
 // js file specific to build the main page and its architeture
 
@@ -9,18 +11,17 @@ function LoadMainPage() {
     const [sections, setSections] = useState([]);
     
     const appendNewSection = () => {
-        console.log(...sections);
         setSections(s => [...s, <Section key={s.length} />]);
     }
 
     return (
-    <div id='container'>
+    <div className='container'>
         <nav>
             <button title="Export file">
-                <img className="icon" src="./export.png" alt="Export project"></img>
+                <img className="icon" src={exportpng} alt="Export project"></img>
             </button>
             <button title="Import file">
-                <img className="icon" src="./import.png" alt="Import project"></img>
+                <img className="icon" src={importpng} alt="Import project"></img>
             </button>
         </nav>
         
