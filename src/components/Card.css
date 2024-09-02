@@ -1,6 +1,40 @@
 
-.Card {
-    background-color: black;
-    width: 100px;
-    height: 100px;
+.card {
+    display: flex;
+    flex-shrink: 0;
+    flex-direction: column;
+    background-color: #d5f2e5;
+    width: 250px;
+    height: 250px;
+    border: 1px solid lightblue;
+    border-radius: 15px;
+    margin: auto 10px;
+}
+
+.card > header {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 15px 15px 0 0;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+
+.card > header > input {
+    background-color: transparent;
+    border: none;
+}
+
+.delete-button {
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-button > img {
+    width: 25px;
+    height: 25px;
 }

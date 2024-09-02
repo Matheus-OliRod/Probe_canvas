@@ -1,5 +1,6 @@
 .ghost-card {
     display: flex;
+    flex-shrink: 0;
     justify-content: center;
     align-items: center;
     width: 250px;
@@ -10,6 +11,7 @@
     margin: 10px;
     transition: linear .1s;
     cursor: pointer;
+    font-size: x-large;
     user-select: none;
 }
 

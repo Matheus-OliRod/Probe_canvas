@@ -1,9 +1,9 @@
 import './GhostCard.css';
 
-function GhostCard() {
+function GhostCard({ onClick }) {
 
     return (
-        <div className='ghost-card'>
+        <div className='ghost-card' onClick={onClick}>
             +
         </div>
     );

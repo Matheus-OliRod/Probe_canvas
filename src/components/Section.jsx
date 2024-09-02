@@ -18,8 +18,7 @@ function Section() {
     }
 
     function appendNewCard() {
-        setCards(c => [...c, <Card key={c.length} />]);
-        console.log("New Card!");
+        setCards(c => [...c, <Card self={c[c.length]} key={c.length} />]);
     }
 
     function handleEnter(event) {
@@ -36,8 +35,8 @@ function Section() {
                 </div>
             </header>
             <div style={{display : isHidden ? "flex" : "none"}} className='content-holder'>
-                <GhostCard onClick={appendNewCard}/>
                 {cards}
+                <GhostCard onClick={appendNewCard}/>
             </div>
         </div>
     );

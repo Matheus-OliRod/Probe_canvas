@@ -1,4 +1,5 @@
 import { useState } from "react";
+import delete_icon from "../resources/delete_icon.png";
 import "./Card.css";
 
 function Card() {
@@ -13,7 +14,7 @@ function Card() {
     }
 
     function handleTitleWriting(event) {
-
+        setTitle(t => event.target.value);
     }
 
     function handleTaskWriting(event) {
@@ -21,13 +22,18 @@ function Card() {
     }
 
     function handleTaskEnter(event) {
-
+        if(event.key == "Enter") {
+            event.target.blur();
+        }
     }
 
     return (
-        <div className="Card">
+        <div className="card">
             <header>
                 <input type="text" value={title} onChange={handleTitleWriting} onKeyDown={handleTitleEnter}/>
+                <button className="delete-button" onClick={delete_self}>
+                    <img src={delete_icon}></img>
+                </button>
             </header>
         </div>
     );
