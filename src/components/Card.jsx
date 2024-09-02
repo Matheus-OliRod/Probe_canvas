@@ -27,6 +27,10 @@ function Card() {
         }
     }
 
+    function delete_self() {
+        
+    }
+
     return (
         <div className="card">
             <header>
