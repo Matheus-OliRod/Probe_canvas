@@ -9,9 +9,13 @@ import Section from "../components/Section.jsx";
 function LoadMainPage() {
 
     const [sections, setSections] = useState([]);
+
+    function delete_section() {
+        setSections(s => s.filter())
+    }
     
     const appendNewSection = () => {
-        setSections(s => [...s, <Section key={s.length} />]);
+        setSections(s => [...s, <Section self_delete={e => delete_section} sectionId={s.length} key={s.length} />]);
     }
 
     return (

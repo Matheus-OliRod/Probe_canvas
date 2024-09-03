@@ -3,7 +3,7 @@ import GhostCard from './GhostCard.jsx';
 import Card from "./Card.jsx";
 import React, {useState} from 'react';
 
-function Section() {
+function Section({ sectionId }) {
 
     const [cards, setCards] = useState([]);
     const [isHidden, setIsHidden] = useState(true);
@@ -18,7 +18,20 @@ function Section() {
     }
 
     function appendNewCard() {
-        setCards(c => [...c, <Card self={c[c.length]} key={c.length} />]);
+        setCards(c => [...c, <Card delete_self={e => delete_card} id={c.length} key={c.length} />]);
+    }
+
+    function delete_card(cardId) {
+        setCards(c => c.filter(card => card.id !== cardId));
+        console.log(cardId);
+        logCards();
+        
+    }
+
+    function logCards() {
+        cards.forEach(c => {
+            console.log(c.id);
+        });
     }
 
     function handleEnter(event) {

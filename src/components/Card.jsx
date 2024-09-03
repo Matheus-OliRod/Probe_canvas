@@ -2,7 +2,7 @@ import { useState } from "react";
 import delete_icon from "../resources/delete_icon.png";
 import "./Card.css";
 
-function Card() {
+function Card({delete_self, id }) {
 
     const [title, setTitle] = useState("Tasks");
     const [tasks, setTasks] = useState([]);
@@ -27,15 +27,11 @@ function Card() {
         }
     }
 
-    function delete_self() {
-        
-    }
-
     return (
         <div className="card">
             <header>
                 <input type="text" value={title} onChange={handleTitleWriting} onKeyDown={handleTitleEnter}/>
-                <button className="delete-button" onClick={delete_self}>
+                <button className="delete-button" onClick={delete_self(id)}>
                     <img src={delete_icon}></img>
                 </button>
             </header>
