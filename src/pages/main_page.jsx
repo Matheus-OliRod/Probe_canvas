@@ -10,12 +10,14 @@ function LoadMainPage() {
 
     const [sections, setSections] = useState([]);
 
-    function delete_section() {
-        setSections(s => s.filter())
+    function updateSection(updatedSection) {
+        setSections(s => s.map(section =>
+            section.id === updatedSection.id ? updatedSection : section
+        ));
     }
-    
+
     const appendNewSection = () => {
-        setSections(s => [...s, <Section self_delete={e => delete_section} sectionId={s.length} key={s.length} />]);
+        setSections(s => [...s, {id : s.length, cards : {}}]);
     }
 
     return (
@@ -38,7 +40,9 @@ function LoadMainPage() {
         </header>
 
         <div id='section-holder'>
-            {sections}
+            {sections.map(section => (
+                <Section key={section.id} section={section} updateSection={updateSection} />
+            ))}
         </div>
     </div>
 
