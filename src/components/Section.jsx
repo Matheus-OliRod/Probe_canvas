@@ -18,7 +18,7 @@ function Section({ section, updateSection }) {
     }
 
     function appendNewCard() {
-        setCards(c => [...c, {id : c.length, title : "Title", tasks : {}}]);
+        setCards(c => [...c, {id : c.length, title : "Title", tasks : []}]);
     }
 
     function updateCard(updatedCard) {

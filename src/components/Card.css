@@ -38,3 +38,18 @@
     width: 25px;
     height: 25px;
 }
+
+.task-holder {
+    padding: 4px;
+    overflow-y: auto;
+}
+
+.task-holder > input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px double gray;
+}
+
+.task-holder > input:focus {
+    outline: none;
+}

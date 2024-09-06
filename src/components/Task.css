@@ -1,0 +1,18 @@
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 2px;
+}
+
+.task-item-deleter {
+    background-color: transparent;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.task-item-deleter > img{
+    width: 20px;
+    height: 20px;
+}
