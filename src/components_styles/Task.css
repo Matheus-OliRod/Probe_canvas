@@ -1,7 +1,16 @@
 .task-item {
     display: flex;
     justify-content: space-between;
-    margin: 2px;
+    margin: 12px;
+    height: fit-content;
+}
+
+.task-item > div > input {
+    height: fit-content;
+}
+
+.task-item > div > p {
+    margin: 0;
 }
 
 .task-item-deleter {
@@ -10,9 +19,11 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    margin: auto 0;
 }
 
 .task-item-deleter > img{
     width: 20px;
     height: 20px;
+    margin: auto 0  ;
 }

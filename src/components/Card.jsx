@@ -40,6 +40,11 @@ function Card({ card, updateCard }) {
         )));
     }
 
+    function deleteTask(deletedTask) {
+        setTasks(t => t.filter(task => deletedTask.id != task.id));
+        console.log("Deleted: ", deletedTask.id);
+    }
+
     return (
         <div className="card">
             <header>
@@ -51,7 +56,7 @@ function Card({ card, updateCard }) {
             <div className="task-holder">
 
                 {tasks.map(task =>
-                (<Task task={task} updateTask={updateTask} key={tasks.length}
+                (<Task task={task} updateTask={updateTask} deleteTask={deleteTask} key={task.id}
                 />))}
 
                 <input type="text" value={taskWriter} onChange={handleTaskWriter} onKeyDown={appendNewTask}/>
