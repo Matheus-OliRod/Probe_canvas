@@ -1,4 +1,4 @@
-import './GhostCard.css';
+import '../components_styles/GhostCard.css';
 
 function GhostCard({ onClick }) {
 

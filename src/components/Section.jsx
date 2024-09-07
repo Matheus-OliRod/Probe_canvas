@@ -1,4 +1,4 @@
-import './Section.css';
+import '../components_styles/Section.css';
 import GhostCard from './GhostCard.jsx';
 import Card from "./Card.jsx";
 import React, {useState} from 'react';

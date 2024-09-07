@@ -1,6 +1,6 @@
 import { useState } from "react";
 import delete_icon from "../resources/delete_icon.png";
-import "./Card.css";
+import "../components_styles/Card.css";
 import Task from "./Task.jsx";
 
 function Card({ card, updateCard }) {
