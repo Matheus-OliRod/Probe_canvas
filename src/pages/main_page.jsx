@@ -3,6 +3,7 @@ import importpng from "../resources/import.png";
 import exportpng from "../resources/export.png";
 import './main_page.css';
 import Section from "../components/Section.jsx";
+import { getUniqueId, askConfirmation } from '../utils/utils.js';
 
 // js file specific to build the main page and its architeture
 
@@ -16,8 +17,14 @@ function LoadMainPage() {
         ));
     }
 
+    function deleteSection(deletedSection) {
+        if(!askConfirmation("section"))
+            return;
+        setSections(s => s.filter(section => section.id !== deletedSection.id));
+    }
+
     const appendNewSection = () => {
-        setSections(s => [...s, {id : s.length, cards : {}}]);
+        setSections(s => [...s, {id : getUniqueId(), cards : {}}]);
     }
 
     return (
@@ -41,7 +48,7 @@ function LoadMainPage() {
 
         <div id='section-holder'>
             {sections.map(section => (
-                <Section key={section.id} section={section} updateSection={updateSection} />
+                <Section key={section.id} section={section} updateSection={updateSection} deleteSection={deleteSection} />
             ))}
         </div>
     </div>

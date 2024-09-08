@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { getUniqueId, askConfirmation} from "../utils/utils.js";
 import delete_icon from "../resources/delete_icon.png";
 import "../components_styles/Card.css";
 import Task from "./Task.jsx";
 
-function Card({ card, updateCard }) {
+function Card({ card, updateCard, deleteCard }) {
 
     const [title, setTitle] = useState(card.title);
     const [taskWriter, setTaskWriter] = useState("");
@@ -20,8 +21,13 @@ function Card({ card, updateCard }) {
             return;
 
         const newTask = event.target.value;
-        setTasks(t => [...t, {id: t.length, taskName : newTask, completed : false}]);
+
+        if(newTask.trim() === "")
+            return;
+
+        setTasks(t => [...t, {id : getUniqueId(), taskName : newTask, completed : false}]);
         setTaskWriter("");
+        updateCard({...card, tasks : tasks});
     }
 
     function enterPress(event) {
@@ -41,17 +47,16 @@ function Card({ card, updateCard }) {
     }
 
     function deleteTask(deletedTask) {
+        if(!askConfirmation("task"))
+            return;
         setTasks(t => t.filter(task => deletedTask.id != task.id));
-        console.log("Deleted: ", deletedTask.id);
     }
 
     return (
         <div className="card">
             <header>
                 <input type="text" value={title} onChange={handleTitleWriting} onKeyDown={enterPress}/>
-                <button className="delete-button">
-                    <img src={delete_icon}></img>
-                </button>
+                <button className="delete-button" onClick={e => deleteCard(card)}></button>
             </header>
             <div className="task-holder">
 
