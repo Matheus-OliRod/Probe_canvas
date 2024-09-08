@@ -38,18 +38,21 @@ function Card({ card, updateCard, deleteCard }) {
     function handleTaskWriter(event) {
         const taskText = event.target.value;
         setTaskWriter(tw => taskText);
+        console.log(taskText);
     }
 
     function updateTask(updatedTask) {
         setTasks(t => t.map(task => (
             task.id === updatedTask.id ? updatedTask : task
         )));
+        updateCard({...card, tasks : tasks});
     }
 
     function deleteTask(deletedTask) {
         if(!askConfirmation("task"))
             return;
         setTasks(t => t.filter(task => deletedTask.id != task.id));
+        updateCard({...card, tasks : tasks});
     }
 
     return (

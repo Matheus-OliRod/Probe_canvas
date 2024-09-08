@@ -3,24 +3,28 @@ import importpng from "../resources/import.png";
 import exportpng from "../resources/export.png";
 import './main_page.css';
 import Section from "../components/Section.jsx";
-import { getUniqueId, askConfirmation } from '../utils/utils.js';
+import { getUniqueId, askConfirmation, saveProject, loadProject } from '../utils/utils.js';
 
 // js file specific to build the main page and its architeture
 
 function LoadMainPage() {
 
-    const [sections, setSections] = useState([]);
+    const previousProject = loadProject();
+    const [sections, setSections] = useState(previousProject);
+   
 
     function updateSection(updatedSection) {
         setSections(s => s.map(section =>
             section.id === updatedSection.id ? updatedSection : section
         ));
+        saveProject(sections);
     }
 
     function deleteSection(deletedSection) {
         if(!askConfirmation("section"))
             return;
         setSections(s => s.filter(section => section.id !== deletedSection.id));
+        saveProject(sections);
     }
 
     const appendNewSection = () => {
