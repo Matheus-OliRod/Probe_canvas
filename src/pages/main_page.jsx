@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import importpng from "../resources/import.png";
 import exportpng from "../resources/export.png";
 import './main_page.css';
@@ -9,26 +9,31 @@ import { getUniqueId, askConfirmation, saveProject, loadProject } from '../utils
 
 function LoadMainPage() {
 
-    const previousProject = loadProject();
-    const [sections, setSections] = useState(previousProject);
+    const currentProject = loadProject();
+    const [sections, setSections] = useState(currentProject);
+
+    useEffect(
+        () => {
+            saveProject(sections);
+        },
+        [sections]
+    );
    
 
     function updateSection(updatedSection) {
         setSections(s => s.map(section =>
             section.id === updatedSection.id ? updatedSection : section
         ));
-        saveProject(sections);
     }
 
     function deleteSection(deletedSection) {
         if(!askConfirmation("section"))
             return;
         setSections(s => s.filter(section => section.id !== deletedSection.id));
-        saveProject(sections);
     }
 
     const appendNewSection = () => {
-        setSections(s => [...s, {id : getUniqueId(), cards : {}}]);
+        setSections(s => [...s, {id : getUniqueId(), cards : {}, title : "Title"}]);
     }
 
     return (

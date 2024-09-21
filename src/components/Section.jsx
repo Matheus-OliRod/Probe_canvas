@@ -1,14 +1,39 @@
 import '../components_styles/Section.css';
 import GhostCard from './GhostCard.jsx';
 import Card from "./Card.jsx";
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {getUniqueId, askConfirmation } from '../utils/utils.js';
+import userEvent from '@testing-library/user-event';
 
 function Section({ section, updateSection, deleteSection }) {
 
+    const [copySection, setCopySection] = useState({...section});
     const [cards, setCards] = useState([]);
     const [isHidden, setIsHidden] = useState(true);
-    const [sectionTitle, setTitle] = useState("Title");
+    const [sectionTitle, setTitle] = useState(copySection.title);
+
+    useEffect(
+        () => {
+            updateSection(copySection);
+            // console.log("Updating section");
+        },
+        [copySection]
+    );
+
+    useEffect(
+        () => {
+            setCopySection(cs => ({...cs, cards : cards}));
+            console.log("updated cards");
+        },
+        [cards]
+    );
+
+    useEffect(
+        () => {
+            setCopySection(cs => ({...cs, title : sectionTitle}));
+        },
+        [sectionTitle]
+    );
 
     function switchVisibility() {
         setIsHidden(i => !i);
@@ -22,26 +47,22 @@ function Section({ section, updateSection, deleteSection }) {
     function handleSectionTitle(event) {
         const newTitle = event.target.value;
         setTitle(t => newTitle);
-        updateSection({...section, title : newTitle});
     }
     
     function appendNewCard() {
         setCards(c => [...c, {id : getUniqueId(), title : "Title", tasks : []}]);
-        updateSection({...section, cards : cards});
     }
 
     function updateCard(updatedCard) {
         setCards(c => c.map(card =>
             card.id === updatedCard.id ? updatedCard : card
         ));
-        updateSection({...section, cards : cards});
     }
 
     function deleteCard(deletedCard) {
         if(!askConfirmation("card"))
             return;
         setCards(c => c.filter(card => card.id !== deletedCard.id));
-        updateSection({...section, cards : cards});
     }
 
     return (

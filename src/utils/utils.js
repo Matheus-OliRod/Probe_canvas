@@ -29,7 +29,6 @@ function askConfirmation(object) {
 function saveProject(sections) {
     const project = JSON.stringify(sections);
     localStorage.setItem("currentProject", project);
-    console.log(sections);
 }
 
 async function saveFile(sections) {
