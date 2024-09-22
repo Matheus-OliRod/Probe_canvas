@@ -1,6 +1,6 @@
 
 body {
-    background-color: turquoise;
+    background-color: rgb(170, 255, 247);
     overflow-x: hidden;
     margin: 0;
     padding: 0;
@@ -37,6 +37,30 @@ nav > button {
 nav > button:hover {
     transform: translateX(10px);
     background-color: #a0a0a0;
+}
+
+#project_eraser {
+    font-size: 30px;
+    width: 35px;
+    height: 35px;
+    border-radius: 10%;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: linear .1s;
+    color: transparent;
+    -webkit-text-stroke: 2px;
+    -webkit-text-stroke-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    user-select: none;
+}
+
+#project_eraser:hover {
+    background-color: #a0a0a0;
+    color: black;
 }
 
 .icon {
@@ -111,5 +135,9 @@ nav > button:hover {
 
     nav > button:hover {
         transform: translateY(10px);
+    }
+
+    #project_eraser {
+        margin: auto 0;
     }
 }

@@ -27,7 +27,7 @@ function Task({ task, updateTask, deleteTask }) {
     return (
         <div className="task-item">
             <div style={{display: "flex", backgroundColor: checked ? "lightgreen" : "transparent", fontWeight: checked ? "bold" : "normal"}}>
-            <input type="checkbox" onChange={handleCompleted} value={checked} />
+            <input type="checkbox" onChange={handleCompleted} checked={checked} />
             <p>{copyTask.taskName}</p>
             </div>
             <button className="task-item-deleter" onClick={e => deleteTask(task)}></button>

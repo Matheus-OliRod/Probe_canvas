@@ -17,11 +17,16 @@
     border-radius: 15px 15px 0 0;
     border-bottom: 1px solid black;
     padding: 5px;
+    max-width: 95%;
 }
 
 .card > header > input {
     background-color: transparent;
     border: none;
+    font-size: medium;
+    font-weight: bolder;
+    text-wrap: wrap;
+    max-width: 80%;
 }
 
 .delete-button {
@@ -43,6 +48,21 @@
 .task-holder {
     padding: 4px;
     overflow-y: auto;
+}
+
+.task-holder::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 0 0px 15px 0;
+}
+
+.task-holder::-webkit-scrollbar {
+    border-radius: 5px;
+    width: 8px;
+}
+
+.task-holder::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 15px;
 }
 
 .task-holder > input {

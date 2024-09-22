@@ -37,19 +37,31 @@ async function saveProject(sections) {
  */
 
 async function saveFile(sections) {
-
+    const temp = document.createElement("a");
+    const data = JSON.stringify(sections);
+    const fileName = Date.now() + ".json";
+    const file = new Blob([data], {type: "aplication/json"});
+    temp.href = URL.createObjectURL(file);
+    temp.download = fileName;
+    temp.click();
 }
-
-
 
 function getSavedProject() {
     const project = localStorage.getItem("currentProject");
     return project ? JSON.parse(project) : [];
 }
 
+function getSavedFile() {
+    const fileInput = document.getElementById("localProjectInput");
+    fileInput.click();
+
+}
+
 export {
     getUniqueId,
     askConfirmation,
     saveProject,
-    getSavedProject
+    saveFile,
+    getSavedProject,
+    getSavedFile
 }
