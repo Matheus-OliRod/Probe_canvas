@@ -26,16 +26,23 @@ function askConfirmation(object) {
  * @param {Object} sections 
  */
 
-function saveProject(sections) {
+async function saveProject(sections) {
     const project = JSON.stringify(sections);
     localStorage.setItem("currentProject", project);
 }
+
+/**
+ * Creates a .json file with the sections, so you can save the project locally
+ * @param {Object} sections 
+ */
 
 async function saveFile(sections) {
 
 }
 
-function loadProject() {
+
+
+function getSavedProject() {
     const project = localStorage.getItem("currentProject");
     return project ? JSON.parse(project) : [];
 }
@@ -44,5 +51,5 @@ export {
     getUniqueId,
     askConfirmation,
     saveProject,
-    loadProject
+    getSavedProject
 }

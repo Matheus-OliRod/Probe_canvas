@@ -3,14 +3,16 @@ import importpng from "../resources/import.png";
 import exportpng from "../resources/export.png";
 import './main_page.css';
 import Section from "../components/Section.jsx";
-import { getUniqueId, askConfirmation, saveProject, loadProject } from '../utils/utils.js';
+import { getUniqueId, askConfirmation, saveProject, getSavedProject } from '../utils/utils.js';
 
 // js file specific to build the main page and its architeture
 
 function LoadMainPage() {
 
-    const currentProject = loadProject();
+    const [currentProject, setCurrentPronject] = useState(getSavedProject); // Makes currentProject only load when mounting
     const [sections, setSections] = useState(currentProject);
+
+    // Saves updated sections on every re-render
 
     useEffect(
         () => {
@@ -19,6 +21,10 @@ function LoadMainPage() {
         [sections]
     );
    
+    /**
+     * Takes an section object and update it by its id
+     * @param {Object} updatedSection 
+     */
 
     function updateSection(updatedSection) {
         setSections(s => s.map(section =>
@@ -26,14 +32,24 @@ function LoadMainPage() {
         ));
     }
 
+    /**
+     * Takes an section object and delets it by its id
+     * @param {Object} deletedSection 
+     * @returns 
+     */
+
     function deleteSection(deletedSection) {
         if(!askConfirmation("section"))
             return;
         setSections(s => s.filter(section => section.id !== deletedSection.id));
     }
 
-    const appendNewSection = () => {
-        setSections(s => [...s, {id : getUniqueId(), cards : {}, title : "Title"}]);
+    /**
+     * Creates a new empty section
+     */
+
+    function appendNewSection() {
+        setSections(s => [...s, {id : getUniqueId(), cards : [], title : "Title"}]);
     }
 
     return (

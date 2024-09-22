@@ -8,14 +8,13 @@ import userEvent from '@testing-library/user-event';
 function Section({ section, updateSection, deleteSection }) {
 
     const [copySection, setCopySection] = useState({...section});
-    const [cards, setCards] = useState([]);
+    const [cards, setCards] = useState(copySection.cards);
     const [isHidden, setIsHidden] = useState(true);
     const [sectionTitle, setTitle] = useState(copySection.title);
 
     useEffect(
         () => {
             updateSection(copySection);
-            // console.log("Updating section");
         },
         [copySection]
     );
@@ -23,7 +22,6 @@ function Section({ section, updateSection, deleteSection }) {
     useEffect(
         () => {
             setCopySection(cs => ({...cs, cards : cards}));
-            console.log("updated cards");
         },
         [cards]
     );
