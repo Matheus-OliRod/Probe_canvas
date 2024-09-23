@@ -52,6 +52,16 @@ function LoadMainPage() {
         setSections(s => [...s, {id : getUniqueId(), cards : [], title : "Title"}]);
     }
 
+    function handleProjectFileLoad() {
+        console.log("Starting");
+        getSavedFile().then((project) => {
+            console.log("All went fine");
+            setSections((s) => (project == null ? s : project));
+        }).catch((err) => {
+            console.log("Somehting went wrong\nError: ", err);
+        });
+    }
+
     function eraseProject() {
         const confirmation = window.confirm("Do you really want to erase this project?");
         if(!confirmation)
@@ -68,8 +78,8 @@ function LoadMainPage() {
             <button title="Export file" onClick={e => saveFile(sections)}>
                 <img className="icon" src={exportpng} alt="Export project"></img>
             </button>
-            <button title="Import file" onClick={getSavedFile}>
-                <input type="file" id="localProjectInput" style={{display: "none"}} />
+            <button title="Import file" onClick={handleProjectFileLoad}>
+                <input type="file" id="localProjectInput" accept='.json' style={{display: "none"}} />
                 <img className="icon" src={importpng} alt="Import project"></img>
             </button>
             <h2 title='Erase Project' id='project_eraser' onClick={eraseProject}>X</h2>
