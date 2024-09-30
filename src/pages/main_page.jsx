@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import importpng from "../resources/import.png";
 import exportpng from "../resources/export.png";
 import './main_page.css';
@@ -9,6 +9,7 @@ import { getUniqueId, askConfirmation, saveProject, saveFile, getSavedProject, g
 
 function LoadMainPage() {
 
+    const fileInputRef = useRef(null);
     const [currentProject, setCurrentProject] = useState(getSavedProject); // Makes currentProject only load when mounting
     const [sections, setSections] = useState(currentProject);
 
@@ -52,15 +53,40 @@ function LoadMainPage() {
         setSections(s => [...s, {id : getUniqueId(), cards : [], title : "Title"}]);
     }
 
-    function handleProjectFileLoad() {
-        console.log("Starting");
-        getSavedFile().then((project) => {
-            console.log("All went fine");
-            setSections((s) => (project == null ? s : project));
-        }).catch((err) => {
-            console.log("Somehting went wrong\nError: ", err);
-        });
+    /**
+     * Will handle file changing in the input, so it will take only one file.
+     * @param {DOM} event
+     */
+
+    function handleFileChange(event) {
+        const file = event.target.files[0];
+        if (file) {
+            getSavedFile(file).then((project) => {
+                setSections(s => (project == null ? s : project));
+                setTimeout(
+                    () => {window.location.reload();},
+                    200
+                )
+            }).catch((err) => {
+                console.log("Something went wrong\nError: ", err);
+            });
+        }
     }
+
+    /**
+     * Clicks the file input input
+     */
+
+    function handleProjectFileLoad() {
+        const fileInput = fileInputRef.current;
+        if(fileInput) {
+            fileInput.click();
+        }
+    }
+
+    /**
+     * It will clear the sections if confirmed
+     */
 
     function eraseProject() {
         const confirmation = window.confirm("Do you really want to erase this project?");
@@ -79,7 +105,7 @@ function LoadMainPage() {
                 <img className="icon" src={exportpng} alt="Export project"></img>
             </button>
             <button title="Import file" onClick={handleProjectFileLoad}>
-                <input type="file" id="localProjectInput" accept='.json' style={{display: "none"}} />
+                <input ref={fileInputRef} onChange={handleFileChange} type="file" id="localProjectInput" accept='.json' style={{display: "none"}} />
                 <img className="icon" src={importpng} alt="Import project"></img>
             </button>
             <h2 title='Erase Project' id='project_eraser' onClick={eraseProject}>X</h2>

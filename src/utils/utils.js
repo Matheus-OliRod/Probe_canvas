@@ -51,42 +51,27 @@ function getSavedProject() {
     return project ? JSON.parse(project) : [];
 }
 
-function getSavedFile() {
+function getSavedFile(file) {
     return new Promise((resolve, reject) => {
-        const fileInput = document.getElementById("localProjectInput");
-        console.log("Hello World");
-    
-        fileInput.onchange = () => {
-            console.log("onchange triggered");
-            const file = fileInput.files[0];
-    
-            if(file) {
-                const reader = new FileReader();
+        const reader = new FileReader();
 
-                console.log("File detected, starting operation...");
-    
-                reader.onload = function(e) {
-                    const content = e.target.result;
-                    try {
-                        const project = JSON.parse(content);
-                        console.log("Got it");
-                        resolve(project);
-                    }
-                    catch(err) {
-                        console.log("Error Parsing: ", err.message);
-                        reject(null);
-                    }
-                };
-            }
-
-            else {
-                console.log("Error: no file selected");
-                reject(null);
+        reader.onload = function(e) {
+            const content = e.target.result;
+            try {
+                const project = JSON.parse(content);
+                resolve(project);
+            } catch (err) {
+                console.log("Error Parsing: ", err.message);
+                reject(err);
             }
         };
-        fileInput.click();
-    });
 
+        reader.onerror = function(e) {
+            reject(new Error("Error reading file"));
+        };
+
+        reader.readAsText(file);
+    });
 }
 
 export {

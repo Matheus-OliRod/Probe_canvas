@@ -7,7 +7,7 @@
     height: 250px;
     border: 1px solid gray;
     border-radius: 15px;
-    background: linear-gradient(to bottom right, #a534f2, #537bff);
+    background-color: #E74C3C;
     margin: 10px;
     transition: linear .1s;
     cursor: pointer;
