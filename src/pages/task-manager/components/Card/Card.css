@@ -31,7 +31,7 @@
 
 .delete-button {
     background-color: transparent;
-    background-image: url("../resources/delete_icon.png");
+    background-image: url("../../../../resources/delete_icon.png");
     background-size: cover;
     background-position: center center;
     border: none;

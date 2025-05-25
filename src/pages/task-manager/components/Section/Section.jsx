@@ -1,9 +1,8 @@
-import '../components_styles/Section.css';
-import GhostCard from './GhostCard.jsx';
-import Card from "./Card.jsx";
+import './Section.css';
+import GhostCard from '../GhostCard/GhostCard.jsx';
+import Card from "../Card/Card.jsx";
 import React, {useEffect, useState} from 'react';
-import {getUniqueId, askConfirmation } from '../utils/utils.js';
-import userEvent from '@testing-library/user-event';
+import {getUniqueId, askConfirmation } from '../../../../utils/utils.js';
 
 function Section({ section, updateSection, deleteSection }) {
 

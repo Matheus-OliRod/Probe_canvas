@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import importpng from "../resources/import.png";
-import exportpng from "../resources/export.png";
-import './main_page.css';
-import Section from "../components/Section.jsx";
-import { getUniqueId, askConfirmation, saveProject, saveFile, getSavedProject, getSavedFile } from '../utils/utils.js';
+import importpng from "../../resources/import.png";
+import exportpng from "../../resources/export.png";
+import './task-manager.css';
+import Section from "./components/Section/Section.jsx";
+import { getUniqueId, askConfirmation, saveProject, saveFile, getSavedProject, getSavedFile } from '../../utils/utils.js';
 
 // js file specific to build the main page and its architeture
 
@@ -61,13 +61,12 @@ function LoadMainPage() {
     function handleFileChange(event) {
         const file = event.target.files[0];
         if (file) {
-            getSavedFile(file).then((project) => {
+            getSavedFile(file)
+            .then((project) => {
                 setSections(s => (project == null ? s : project));
-                setTimeout(
-                    () => {window.location.reload();},
-                    200
-                )
-            }).catch((err) => {
+            }).then(
+                window.location.reload()
+            ).catch((err) => {
                 console.log("Something went wrong\nError: ", err);
             });
         }

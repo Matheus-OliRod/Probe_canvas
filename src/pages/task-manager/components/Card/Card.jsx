@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getUniqueId, askConfirmation} from "../utils/utils.js";
-import "../components_styles/Card.css";
-import Task from "./Task.jsx";
+import { getUniqueId, askConfirmation} from "../../../../utils/utils.js";
+import "./Card.css";
+import Task from "../Task/Task.jsx";
 
 function Card({ card, updateCard, deleteCard }) {
 

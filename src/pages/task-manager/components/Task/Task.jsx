@@ -1,4 +1,4 @@
-import "../components_styles/Task.css";
+import "./Task.css";
 import { useEffect, useState } from "react";
 
 function Task({ task, updateTask, deleteTask }) {
