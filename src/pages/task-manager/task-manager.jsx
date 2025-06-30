@@ -7,7 +7,7 @@ import { getUniqueId, askConfirmation, saveProject, saveFile, getSavedProject, g
 
 // js file specific to build the main page and its architeture
 
-function LoadMainPage() {
+function LoadTaskManager() {
 
     const fileInputRef = useRef(null);
     const [currentProject, setCurrentProject] = useState(getSavedProject); // Makes currentProject only load when mounting
@@ -97,6 +97,8 @@ function LoadMainPage() {
         setSections(s => []);
     }
 
+    // HTML Structure
+
     return (
     <div className='container'>
         <nav>
@@ -129,4 +131,4 @@ function LoadMainPage() {
     );
 }
 
-export default LoadMainPage;
+export default LoadTaskManager;
